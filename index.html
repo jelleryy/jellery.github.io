@@ -1,364 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JELLERY</title>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #eaeaea;
-  overflow: hidden;
-}
-
-/* BACKGROUND VIDEO */
-#bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1) saturate(1.35) contrast(1.05) blur(0.3px);
-  z-index: -2;
-}
-
-/* CENTER CARD */
-.container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(10px) saturate(1);
-  border-radius: 18px;
-  padding: 36px;
-  width: 360px;
-  box-shadow: 0 0 40px rgba(0,0,0,.5);
-}
-
-/* NAME */
-h1 {
-  text-align: center;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-/* LINKS */
-a.link {
-  display: block;
-  text-decoration: none;
-  color: #eaeaea;
-  background: rgba(255,255,255,0.08);
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  text-align: center;
-  transition: all .2s ease;
-}
-
-a.link:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(70, 140, 255, 0.75),
-    rgba(40, 110, 220, 0.75)
-  );
-  transform: scale(1.04);
-  box-shadow: 0 0 28px rgba(70, 140, 255, 0.6);
-}
-
-/* PLAYER */
-.player {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.10);
-}
-
-.track {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.track .name {
-  font-weight: 700;
-  font-size: 0.98rem;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track .artist {
-  color: rgba(255,255,255,0.65);
-  font-size: 0.82rem;
-  margin-top: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* TIME + VOLUME */
-.metaRow{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 10px 2px 6px;
-}
-
-.time {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.65);
-  white-space: nowrap;
-}
-
-.vol {
-  display:flex;
-  align-items:center;
-  gap: 8px;
-}
-
-.vol label{
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.65);
-  user-select:none;
-}
-
-/* lightweight range styling */
-.vol input[type="range"]{
-  width: 110px;
-  accent-color: rgba(70,140,255,0.9);
-}
-
-/* CONTROLS */
-.controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 26px;
-}
-
-.ctrl {
-  width: 44px;
-  height: 44px;
-  border: none;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.10);
-  color: #fff;
-  cursor: pointer;
-  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
-  font-size: 18px;
-  line-height: 44px;
-}
-
-.ctrl:hover {
-  background: rgba(70,140,255,0.22);
-  transform: scale(1.06);
-  box-shadow: 0 0 18px rgba(70,140,255,0.35);
-}
-
-.ctrl.big {
-  width: 54px;
-  height: 54px;
-  font-size: 20px;
-  line-height: 54px;
-  background: rgba(255,255,255,0.14);
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JELLERY</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <video id="bg" autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4" />
+  </video>
 
-<!-- BACKGROUND VIDEO -->
-<video id="bg" autoplay muted loop playsinline>
-  <source src="bg.mp4" type="video/mp4">
-</video>
+  <audio id="music" preload="metadata"></audio>
 
-<!-- ONE audio element controlled by playlist -->
-<audio id="music" preload="metadata"></audio>
+  <div class="container">
+    <div class="card">
+      <h1>JELLERY</h1>
 
-<div class="container">
-  <div class="card">
-    <h1>JELLERY</h1>
+      <a class="link" href="https://savelife.in.ua/donate/#donate-army-card-once" target="_blank">savelifeUA</a>
+      <a class="link" href="https://www.twitch.tv/jelleska_" target="_blank">twitch</a>
+      <a class="link" href="https://www.instagram.com/jellery530/" target="_blank">instagram</a>
+      <a class="link" href="https://steamcommunity.com/id/jellery123" target="_blank">steam</a>
+      <a class="link" href="https://rewish.io/XdYEAA/wishes" target="_blank">wishlist</a>
 
-    <a class="link" href="https://savelife.in.ua/donate/#donate-army-card-once" target="_blank">savelifeUA</a>
-    <a class="link" href="https://www.twitch.tv/jelleska_" target="_blank">twitch</a>
-    <a class="link" href="https://www.instagram.com/jellery530/" target="_blank">instagram</a>
-    <a class="link" href="https://steamcommunity.com/id/jellery123" target="_blank">steam</a>
-    <a class="link" href="https://rewish.io/XdYEAA/wishes" target="_blank">wishlist</a>
+      <div class="player">
+        <div class="track">
+          <div class="name" id="trackName">—</div>
+          <div class="artist" id="trackArtist">—</div>
+        </div>
 
-    <!-- PLAYER -->
-    <div class="player">
-      <div class="track">
-        <div class="name" id="trackName">—</div>
-        <div class="artist" id="trackArtist">—</div>
-      </div>
+        <div class="metaRow">
+          <div class="time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></div>
 
-      <!-- TIME + VOLUME -->
-      <div class="metaRow">
-        <div class="time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></div>
+          <div class="vol">
+            <label for="volRange">vol</label>
+            <input id="volRange" type="range" min="0" max="1" step="0.01" value="0.40" />
+          </div>
+        </div>
 
-        <div class="vol">
-          <label for="volRange">vol</label>
-          <input id="volRange" type="range" min="0" max="1" step="0.01" value="0.40">
+        <div class="controls">
+          <button class="ctrl" id="prevBtn" aria-label="Previous">⏮</button>
+          <button class="ctrl big" id="playBtn" aria-label="Play/Pause">▶</button>
+          <button class="ctrl" id="nextBtn" aria-label="Next">⏭</button>
         </div>
       </div>
 
-      <div class="controls">
-        <button class="ctrl" id="prevBtn" aria-label="Previous">⏮</button>
-        <button class="ctrl big" id="playBtn" aria-label="Play/Pause">▶</button>
-        <button class="ctrl" id="nextBtn" aria-label="Next">⏭</button>
-      </div>
     </div>
-
   </div>
-</div>
 
-<script>
-const music = document.getElementById("music");
-
-const trackName = document.getElementById("trackName");
-const trackArtist = document.getElementById("trackArtist");
-
-const prevBtn = document.getElementById("prevBtn");
-const playBtn = document.getElementById("playBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-const curTimeEl = document.getElementById("curTime");
-const durTimeEl = document.getElementById("durTime");
-const volRange = document.getElementById("volRange");
-
-// 4 tracks
-const playlist = [
-  { name: "losing", artist: "Lonnex", src: "01.mp3" },
-  { name: "Chimeras", artist: "Tim Hecker", src: "02.mp3" },
-  { name: "Black Tusk Descent", artist: "loscil", src: "03.mp3" },
-  { name: "The Bramble Briar", artist: "Martyn Bates i Mick Harris", src: "04.mp3" },
-];
-
-let idx = 0;
-let fading = false;
-
-function load(i) {
-  idx = (i + playlist.length) % playlist.length;
-  const t = playlist[idx];
-  music.src = t.src;
-  trackName.textContent = t.name;
-  trackArtist.textContent = t.artist;
-}
-
-function updateIcon() {
-  playBtn.textContent = music.paused ? "▶" : "⏸";
-}
-
-function fmtTime(sec){
-  if (!isFinite(sec) || sec < 0) return "0:00";
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `${m}:${String(s).padStart(2,"0")}`;
-}
-
-function updateTimes(){
-  curTimeEl.textContent = fmtTime(music.currentTime || 0);
-  durTimeEl.textContent = fmtTime(music.duration || 0);
-}
-
-/* Smooth cross-fade (lightweight) */
-async function fadeToTrack(newIndex){
-  if (fading) return;
-  fading = true;
-
-  const startVol = Number(volRange.value) || 0.4;
-
-  // fade out
-  for (let v = startVol; v >= 0.02; v -= 0.04){
-    music.volume = Math.max(0, v);
-    await new Promise(r => setTimeout(r, 20));
-  }
-  music.pause();
-
-  load(newIndex);
-
-  // play + fade in
-  music.volume = 0.02;
-  try { await music.play(); } catch(e) {}
-  for (let v = 0.02; v <= startVol; v += 0.04){
-    music.volume = Math.min(startVol, v);
-    await new Promise(r => setTimeout(r, 20));
-  }
-
-  updateIcon();
-  fading = false;
-}
-
-/* Volume control */
-function applyVolume(){
-  music.volume = Number(volRange.value);
-}
-volRange.addEventListener("input", applyVolume);
-
-/* Buttons */
-playBtn.addEventListener("click", async () => {
-  applyVolume();
-  if (music.paused) {
-    try { await music.play(); } catch(e) {}
-  } else {
-    music.pause();
-  }
-  updateIcon();
-});
-
-prevBtn.addEventListener("click", async () => {
-  applyVolume();
-  if (!music.paused) {
-    await fadeToTrack(idx - 1);
-  } else {
-    load(idx - 1);
-    updateTimes();
-    updateIcon();
-  }
-});
-
-nextBtn.addEventListener("click", async () => {
-  applyVolume();
-  if (!music.paused) {
-    await fadeToTrack(idx + 1);
-  } else {
-    load(idx + 1);
-    updateTimes();
-    updateIcon();
-  }
-});
-
-music.addEventListener("ended", async () => {
-  applyVolume();
-  await fadeToTrack(idx + 1);
-});
-
-/* Time updates */
-music.addEventListener("loadedmetadata", updateTimes);
-music.addEventListener("timeupdate", updateTimes);
-
-music.addEventListener("play", updateIcon);
-music.addEventListener("pause", updateIcon);
-
-/* start state */
-load(0);
-applyVolume();
-updateIcon();
-updateTimes();
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>
