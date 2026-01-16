@@ -113,3 +113,44 @@ load(0);
 applyVolume();
 updateIcon();
 updateTimes();
+
+const card = document.querySelector(".card");
+
+let cx = 0, cy = 0;
+let tx = 0, ty = 0;
+
+const maxMove = 14;   // зміщення в px
+const maxTilt = 6;   // нахил у градусах
+
+card.addEventListener("mousemove", (e) => {
+  const r = card.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+
+  const px = (x / r.width - 0.5) * 2;
+  const py = (y / r.height - 0.5) * 2;
+
+  tx = px * maxMove;
+  ty = py * maxMove;
+});
+
+card.addEventListener("mouseleave", () => {
+  tx = 0;
+  ty = 0;
+});
+
+function animateTilt(){
+  cx += (tx - cx) * 0.12;
+  cy += (ty - cy) * 0.12;
+
+  card.style.transform = `
+    translate(${cx}px, ${cy}px)
+    rotateX(${-cy * maxTilt / maxMove}deg)
+    rotateY(${cx * maxTilt / maxMove}deg)
+  `;
+
+  requestAnimationFrame(animateTilt);
+}
+
+animateTilt();
+
